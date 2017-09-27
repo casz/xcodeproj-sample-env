@@ -4,4 +4,4 @@
 
 # To test it
 
-`bundle exec rspec .`
+`bundle exec rspec`
