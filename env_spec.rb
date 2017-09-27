@@ -30,7 +30,7 @@ describe 'xcodeproj variables' do
     end
   end
 
-  it 'substitues bundle identifiers variable' do
+  it 'substitues bundle identifiers env variable' do
     ENV['APP_IDENTIFIER'] = 'com.widex.appstore.xcodeproj-sample-env'
     project = Xcodeproj::Project.open('xcodeproj-sample-env.xcodeproj')
     project.targets.each do |target|
