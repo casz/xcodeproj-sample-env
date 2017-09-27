@@ -5,7 +5,6 @@ ENV['MORTY'] = 'Dont be trippin dog we got you'
 normal = 'com.widex.enterprise.xcodeproj-sample-env'
 
 describe 'xcodeproj variables' do
-
   it 'should still resolve xcode build settings' do
     project = Xcodeproj::Project.open('xcodeproj-sample-env.xcodeproj')
     project.targets.each do |target|
