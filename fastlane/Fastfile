@@ -1,0 +1,19 @@
+fastlane_version '2.39.2'
+xcversion version: '~> 9'
+
+default_platform :ios
+platform :ios do
+
+  desc 'Override app identifier on build'
+  lane :build do |options|
+    fastlane_require 'xcodeproj'
+    ENV['APP_IDENTIFIER'] = 'com.widex.appstore.xcodeproj-sample-env' if options[:override]
+    project = Xcodeproj::Project.open('../xcodeproj-sample-env.xcodeproj')
+    project.targets.each do |target|
+      target.build_configuration_list.build_configurations.each do |build_configuration|
+        app_identifier = build_configuration.resolve_build_setting("APP_IDENTIFIER")
+        puts "app_identifier: #{app_identifier} target: #{target.name}, build_configuration: #{build_configuration.name}"
+      end
+    end
+  end
+end
