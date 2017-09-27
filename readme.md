@@ -1,4 +1,4 @@
-# Run
+# To test
 
 `fastlane ios build override:true`
 
