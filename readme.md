@@ -1,7 +1,7 @@
 # To run it
 
-`fastlane ios build override:true`
+`bundle exec fastlane ios build override:true`
 
 # To test it
 
-`rspec .`
+`bundle exec rspec .`
