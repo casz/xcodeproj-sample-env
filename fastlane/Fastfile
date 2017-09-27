@@ -7,12 +7,22 @@ platform :ios do
   desc 'Override app identifier on build'
   lane :build do |options|
     fastlane_require 'xcodeproj'
-    ENV['APP_IDENTIFIER'] = 'com.widex.appstore.xcodeproj-sample-env' if options[:override]
+    if options[:override]
+      ENV['APP_IDENTIFIER'] = 'com.widex.appstore.xcodeproj-sample-env' 
+      ENV['RICK'] = 'WHAT UP MY GLIP GLOPS!'
+      ENV['MORTY'] = 'Dont be trippin dog we got you'
+    end
     project = Xcodeproj::Project.open('../xcodeproj-sample-env.xcodeproj')
     project.targets.each do |target|
       target.build_configuration_list.build_configurations.each do |build_configuration|
         app_identifier = build_configuration.resolve_build_setting("APP_IDENTIFIER")
+        bundle_identifier = build_configuration.resolve_build_setting("PRODUCT_BUNDLE_IDENTIFIER")
         puts "app_identifier: #{app_identifier} target: #{target.name}, build_configuration: #{build_configuration.name}"
+        puts "bundle_identifier: #{bundle_identifier} target: #{target.name}, build_configuration: #{build_configuration.name}\n"
+        debug_env = build_configuration.resolve_build_setting("DEBUG_ENV")
+        puts "debug_env: #{debug_env} target: #{target.name}, build_configuration: #{build_configuration.name}"
+        release_env = build_configuration.resolve_build_setting("RELEASE_ENV")
+        puts "release_env: #{release_env} target: #{target.name}, build_configuration: #{build_configuration.name}\n"
       end
     end
   end
