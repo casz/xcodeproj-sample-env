@@ -24,8 +24,8 @@ describe 'xcodeproj variables' do
         bundle_identifier = build_configuration.resolve_build_setting('PRODUCT_BUNDLE_IDENTIFIER')
         expect(app_identifier).to eq(normal)
         expect(bundle_identifier).to eq(normal) if target.name == 'xcodeproj-sample-env'
-        expect(bundle_identifier).to eq("#{normal}.watchkitapp") if target.name == 'xcodeproj-sample-env-watch Extension'
-        expect(bundle_identifier).to eq("#{normal}.watchkitapp.watchkitextension") if target.name == 'xcodeproj-sample-env-watch'
+        expect(bundle_identifier).to eq("#{normal}.watchkitapp")  if target.name == 'xcodeproj-sample-env-watch'
+        expect(bundle_identifier).to eq("#{normal}.watchkitapp.watchkitextension") if target.name == 'xcodeproj-sample-env-watch Extension'
       end
     end
   end
@@ -39,8 +39,8 @@ describe 'xcodeproj variables' do
         bundle_identifier = build_configuration.resolve_build_setting('PRODUCT_BUNDLE_IDENTIFIER')
         expect(app_identifier).to eq(ENV['APP_IDENTIFIER'])
         expect(bundle_identifier).to eq((ENV['APP_IDENTIFIER']).to_s) if target.name == 'xcodeproj-sample-env'
-        expect(bundle_identifier).to eq("#{ENV['APP_IDENTIFIER']}.watchkitapp") if target.name == 'xcodeproj-sample-env-watch Extension'
-        expect(bundle_identifier).to eq("#{ENV['APP_IDENTIFIER']}.watchkitapp.watchkitextension") if target.name == 'xcodeproj-sample-env-watch'
+        expect(bundle_identifier).to eq("#{ENV['APP_IDENTIFIER']}.watchkitapp")  if target.name == 'xcodeproj-sample-env-watch'
+        expect(bundle_identifier).to eq("#{ENV['APP_IDENTIFIER']}.watchkitapp.watchkitextension") if target.name == 'xcodeproj-sample-env-watch Extension'
       end
     end
   end
